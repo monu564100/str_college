@@ -1,53 +1,55 @@
+# Student Management System
 
-Frontend-- >
-  React js / typescript
-Backend -- >
-  Express js 
+## 📌 Overview
 
-Database -- >
-  Mongodb (mongoose)
+The **Student Management System** is a web-based application designed to streamline student, faculty, and admin interactions. It facilitates student profile management, academic record tracking, IA marks handling, and project submissions.
 
+## 🚀 Tech Stack
 
-There are 3 logins -- >
+### Frontend:
 
+- React.js (with TypeScript)
+- Vite.js
+- Context API
+- Tailwind CSS / CSS Modules
 
- Admin (creator) -- > 
- admin will able to create student , create faculty , able to show the student data , results.. , able to delete suspend faculty and student..
+### Backend:
 
+- Node.js with Express.js
+- MongoDB with Mongoose
+- JWT Authentication
+- Multer (for file uploads)
+- ExcelJS (for parsing Excel files)
 
- Faculty (Authorizor)-->
- Able to create the student or able to Authorize the student ..
- Able to add Iat marks , assignmnet marks through Excel sheets..
- Able to delete the student ..
- Aprooving mini mooc project title..
- able to search the student with his name or usn to get his all dasboard details his ia marks and other all details
+## 🎯 Features
 
- Student (Authorized)-->
- Student register or login .. 
- After authorization through Faculty..
- Student will able to fill his Student Profile details..
- Able to upload mooc and mini project along with his ppt/pdf/docs.. also certificate this details will verified by faculty
- Student will able to see the IA Marks for any semester he cant edit .
+### 🔹 Admin (Creator)
 
- Frontend React js -- >
-  src /
-    -> StudentProfile.jsx
-    -> PreviousAcademicDetails.jsx
-    -> HobiesAndPrevious.jsx
-    -> AdmissionDetails.jsx
-    -> Attendence.jsx
-    -> Performance.jsx
-    -> MoocCourseRecord.jsx
-    -> MiniProject.jsx 
-    -> ResultAndArearRecord.jsx
-    
+- Create and manage students and faculty
+- View student data and results
+- Delete or suspend faculty and students
 
----------------------------------------------------------------------------------------------------------
+### 🔹 Faculty (Authorizer)
 
-->> Project Structure --(Backend) ..
-   
-    student-management-system-backend/
-│── src/
+- Create and authorize students
+- Upload IA marks and assignment marks via Excel
+- Delete students
+- Approve Mini MOOC project titles
+- Search students by name or USN
+
+### 🔹 Student (Authorized)
+
+- Register and log in (requires faculty authorization)
+- Update student profile details
+- Upload MOOC & Mini Project submissions (PPT/PDF/DOCs, Certificates)
+- View IA marks for any semester (Read-only)
+
+## 🏗 Project Structure
+
+### 📌 Backend (`student-management-system-backend/`)
+
+```
+├── src/
 │   ├── controllers/
 │   │   ├── adminController.js
 │   │   ├── facultyController.js
@@ -75,21 +77,19 @@ There are 3 logins -- >
 │   ├── utils/
 │   │   ├── excelParser.js
 │   ├── public/
-│   │   ├── uploads/ (For storing uploaded project files)
+│   │   ├── uploads/ (For storing project files)
 │   ├── app.js
 │   ├── server.js
-│── package.json
-│── .env
-│── .gitignore
-│── README.md
+├── package.json
+├── .env
+├── .gitignore
+├── README.md
+```
 
------------------------------------------------------------------------------------------------------
+### 📌 Frontend (`student-management-system-frontend/`)
 
---> Project structure for frontend 
- 
-
-  student-management-system-frontend/
-│── src/
+```
+├── src/
 │   ├── components/
 │   │   ├── Navbar.jsx
 │   │   ├── Sidebar.jsx
@@ -118,40 +118,98 @@ There are 3 logins -- >
 │   ├── App.jsx
 │   ├── main.jsx
 │   ├── router.jsx
-│── .env
-│── package.json
-│── vite.config.js
-│── .gitignore
-│── README.md
+├── package.json
+├── .env
+├── vite.config.js
+├── .gitignore
+├── README.md
+```
+
+## 📡 API Endpoints
+
+### Authentication (`/api/auth/`)
+
+| Method | Route       | Description   |
+| ------ | ----------- | ------------- |
+| POST   | `/login`    | User login    |
+| POST   | `/register` | Register user |
+
+### Admin Routes (`/api/admin/`)
+
+| Method | Route             | Description            |
+| ------ | ----------------- | ---------------------- |
+| POST   | `/create-student` | Create a new student   |
+| POST   | `/create-faculty` | Create a new faculty   |
+| GET    | `/students`       | Get all students       |
+| DELETE | `/student/:id`    | Delete/suspend student |
+
+### Faculty Routes (`/api/faculty/`)
+
+| Method | Route                | Description                    |
+| ------ | -------------------- | ------------------------------ |
+| POST   | `/authorize-student` | Approve a student registration |
+| POST   | `/upload-ia-marks`   | Upload IA marks via Excel      |
+| GET    | `/students/:usn`     | Get student details by USN     |
+
+### Student Routes (`/api/student/`)
+
+| Method | Route                  | Description                    |
+| ------ | ---------------------- | ------------------------------ |
+| POST   | `/upload-mooc`         | Upload MOOC course details     |
+| POST   | `/upload-mini-project` | Upload Mini Project details    |
+| GET    | `/ia-marks/:semester`  | View IA Marks for any semester |
+
+## 🛠 Installation & Setup
+
+### 🔹 Backend Setup
+
+```sh
+cd student-management-system-backend
+npm install
+npm run dev
+```
+
+### 🔹 Frontend Setup
+
+```sh
+cd student-management-system-frontend
+npm install
+npm run dev
+```
+
+## 📄 Environment Variables
+
+Create a `.env` file in both the backend and frontend directories:
+
+### Backend `.env`
+
+```
+PORT=5000
+MONGO_URI=mongodb+srv://your_mongo_connection_string
+JWT_SECRET=your_jwt_secret_key
+```
+
+### Frontend `.env`
+
+```
+VITE_API_URL=http://localhost:5000/api
+```
+
+## 📜 License
+
+This project is licensed under the **MIT License**.
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+## 📞 Contact
+
+For inquiries, reach out via [email](mailto\:monu56410000@gmail.com).
+
+---
+
+Made with ❤️ by Monu Kumar & Team 🚀
 
 
----------------------------------------------------------------------------------------------------------
- 
 
- 📌 API Endpoints
-Authentication (/api/auth/)
-
-Method	Route	Description
-
-POST	/login	User login
-POST	/register	Register user
-
-
-Admin Routes (/api/admin/)
-
-Method	Route	Description
-
-POST	/create-student	Create a new student
-POST	/create-faculty	Create a new faculty
-GET	/students	Get all students
-DELETE	/student/:id	Delete/suspend student
-Faculty Routes (/api/faculty/)
-Method	Route	Description
-POST	/authorize-student	Approve a student registration
-POST	/upload-ia-marks	Upload IA marks via Excel
-GET	/students/:usn	Get student details by USN
-Student Routes (/api/student/)
-Method	Route	Description
-POST	/upload-mooc	Upload MOOC course details
-POST	/upload-mini-project	Upload Mini Project details
-GET	/ia-marks/:semester	View IA Marks for any semester
